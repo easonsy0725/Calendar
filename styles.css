@@ -1,0 +1,364 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    color: #333;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    color: white;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.logo i {
+    color: #ff2d55;
+}
+
+.controls {
+    display: flex;
+    gap: 15px;
+}
+
+button {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+button:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.connect-method {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.method-card {
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 16px;
+    padding: 20px;
+    flex: 1;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.method-card h3 {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #007aff;
+}
+
+.method-card p {
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.method-card input[type="file"],
+.method-card input[type="text"],
+.method-card input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+.method-card button {
+    width: 100%;
+    background: #007aff;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.calendar-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 25px 0;
+    text-align: center;
+}
+
+.stat-item {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    flex: 1;
+    margin: 0 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: 600;
+    color: #007aff;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}
+
+.main-content {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.sidebar {
+    flex: 0 0 250px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.calendar {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.current-date {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.view-options {
+    display: flex;
+    gap: 10px;
+}
+
+.view-options button {
+    background: rgba(0, 0, 0, 0.05);
+    color: #333;
+    border: none;
+}
+
+.view-options button.active {
+    background: #007aff;
+    color: white;
+}
+
+.events-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.event-day {
+    margin-bottom: 20px;
+}
+
+.day-header {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #007aff;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.event-card {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+    border-left: 4px solid #007aff;
+}
+
+.event-card:hover {
+    transform: translateY(-3px);
+}
+
+.event-card.work {
+    border-left-color: #34c759;
+}
+
+.event-card.personal {
+    border-left-color: #af52de;
+}
+
+.event-card.health {
+    border-left-color: #ff2d55;
+}
+
+.event-card.learning {
+    border-left-color: #ff9500;
+}
+
+.event-card.family {
+    border-left-color: #ffcc00;
+}
+
+.event-time {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.event-title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.event-details {
+    display: flex;
+    gap: 15px;
+    color: #888;
+    font-size: 14px;
+}
+
+.calendar-list {
+    list-style: none;
+}
+
+.calendar-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.calendar-item:hover {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.calendar-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.calendar-name {
+    flex: 1;
+}
+
+.calendar-events-count {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 2px 8px;
+    font-size: 12px;
+}
+
+.info-box {
+    background: #e6f2ff;
+    border-radius: 12px;
+    padding: 15px;
+    margin-top: 20px;
+    border-left: 4px solid #007aff;
+}
+
+.info-box h3 {
+    margin-bottom: 10px;
+    color: #007aff;
+}
+
+.info-box p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.info-box ol, .info-box ul {
+    padding-left: 20px;
+    margin-bottom: 10px;
+}
+
+.info-box li {
+    margin-bottom: 5px;
+}
+
+.info-box a {
+    color: #007aff;
+    text-decoration: none;
+}
+
+.info-box a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+    
+    .connect-method {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        flex: 1;
+    }
+    
+    .calendar-stats {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

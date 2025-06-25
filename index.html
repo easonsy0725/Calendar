@@ -1,16 +1,111 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-calendar-alt"></i>
+                <span>Calendar</span>
+            </div>
+            <div class="controls">
+                <button id="today-btn"><i class="fas fa-calendar-day"></i> Today</button>
+                <button id="refresh-btn"><i class="fas fa-sync"></i> Refresh</button>
+                <button id="import-btn"><i class="fas fa-file-import"></i> Import Calendar</button>
+            </div>
+        </header>
 
-    <script src="script.js" async defer></script>
-  </body>
+        <div class="calendar-stats">
+            <div class="stat-item">
+                <div class="stat-value" id="events-count">0</div>
+                <div class="stat-label">Events Loaded</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="calendars-count">0</div>
+                <div class="stat-label">Calendars</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="upcoming-count">0</div>
+                <div class="stat-label">Upcoming</div>
+            </div>
+        </div>
+
+        <div class="connect-method">
+            <div class="method-card" id="ics-method">
+                <h3><i class="fas fa-file-export"></i> Import ICS File</h3>
+                <p>Export your calendar from Apple Calendar as an .ics file and import it here</p>
+                <input type="file" id="ics-file" accept=".ics">
+                <button id="import-ics-btn">Import ICS File</button>
+            </div>
+            
+            <div class="method-card" id="caldav-method">
+                <h3><i class="fas fa-cloud"></i> Connect via CalDAV</h3>
+                <p>Connect directly to your iCloud calendar (requires app-specific password)</p>
+                <div class="form-group">
+                    <label for="apple-id">Apple ID:</label>
+                    <input type="text" id="apple-id" placeholder="your@appleid.com">
+                </div>
+                <div class="form-group">
+                    <label for="app-password">App Password:</label>
+                    <input type="password" id="app-password" placeholder="xxxx-xxxx-xxxx-xxxx">
+                </div>
+                <button id="connect-caldav-btn">Connect to iCloud</button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <h2><i class="fas fa-calendar-check"></i> Calendars</h2>
+                <ul class="calendar-list" id="calendar-list">
+                    <!-- Calendars will be populated by JavaScript -->
+                </ul>
+
+                <div class="info-box">
+                    <h3><i class="fas fa-info-circle"></i> How to Access Your Apple Calendar</h3>
+                    <p><strong>Method 1: Export ICS File</strong></p>
+                    <ol>
+                        <li>Open Apple Calendar on your Mac</li>
+                        <li>Select the calendar you want to export</li>
+                        <li>Go to File → Export → Export...</li>
+                        <li>Save the .ics file</li>
+                        <li>Import it using the button above</li>
+                    </ol>
+                    
+                    <p><strong>Method 2: CalDAV Connection</strong></p>
+                    <ol>
+                        <li>Go to <a href="https://appleid.apple.com" target="_blank">appleid.apple.com</a></li>
+                        <li>Sign in and go to Security → App-Specific Passwords</li>
+                        <li>Generate a password for "Calendar Viewer"</li>
+                        <li>Enter your Apple ID and the generated password above</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="calendar">
+                <div class="calendar-header">
+                    <div class="current-date" id="current-date">June 26, 2025</div>
+                    <div class="view-options">
+                        <button class="active">Day</button>
+                        <button>Week</button>
+                        <button>Month</button>
+                    </div>
+                </div>
+
+                <div class="events-container" id="events-container">
+                    <!-- Events will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include ical.js for parsing ICS files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ical.js/1.4.0/ical.min.js"></script>
+    <script src="script.js"></script>
+</body>
 </html>
